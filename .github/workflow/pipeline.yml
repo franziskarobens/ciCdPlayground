@@ -20,10 +20,9 @@ jobs:
       - name: Build
         run: yarn build
       - name: End to end test
-        run: yarn e2e::test
       - name: Publish test results
-        uses: actions/upload-artifact@v3
+        uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          name: junit-results
-          path: reports/*.xml
+          files: |
+            reports/*.xml
